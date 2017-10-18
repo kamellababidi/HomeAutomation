@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View ,Text , Image , KeyboardAvoidingView } from 'react-native';
-import LoginForm from './SignupForm';
+import Signup from './SignupForm';
 
 export default class Signup extends React.Component {
   render() {
