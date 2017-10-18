@@ -72,7 +72,10 @@ input : {
 	paddingHorizontal : 10 , 
 	backgroundColor: '#E0FFFF',
 	color :'#C71585',
-	paddingHorizontal : 10
+	paddingHorizontal : 10,
+  width :200, 
+  textAlign :'center'
+
 
 
 },

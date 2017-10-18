@@ -78,12 +78,14 @@ container : {
 	padding :20
 },
 input : {
-	height: 40, 
+	height: 40,
+  width :200, 
 	marginBottom :20,
 	paddingHorizontal : 10 , 
 	backgroundColor: '#E0FFFF',
 	color :'#C71585',
-	paddingHorizontal : 10
+	paddingHorizontal : 10,
+  textAlign :'center'
 
 
 },
