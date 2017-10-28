@@ -94,7 +94,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion '25.0.0'
 
     defaultConfig {
@@ -143,6 +143,8 @@ dependencies {
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':RNPermissionsModule')
+    compile project(':VoiceModule')
+    compile project(':react-native-android-speech')
 }
 
 
