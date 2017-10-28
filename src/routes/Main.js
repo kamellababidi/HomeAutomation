@@ -29,7 +29,7 @@ export default class Main extends React.Component {
                  let response = await fetch('http://192.168.8.103:8000/logout');
                  let responseJson = await response.json();
                  this.setState({logout:responseJson})
-                 return this.props.changeV('Login');
+                 // return this.props.changeV('Login');
            } catch(error) {
              console.error(error);
              }

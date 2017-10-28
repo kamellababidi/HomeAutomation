@@ -11,7 +11,7 @@ import Login from './src/routes/Login';
 import Signup from './src/routes/Signup';
 import Profile from './src/routes/Profile';
 import Map from './src/routes/map';
-import Home from './src/routes/Home';
+// import Home from './src/routes/Home';
 import MainScreenNavigator from './src/routes/Home';
 import Controle from './src/routes/Controle';
 import ChatBox from './src/routes/ChatBox';
