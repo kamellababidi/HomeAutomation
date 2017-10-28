@@ -8,10 +8,16 @@ import {
 
     
 } from 'react-native';
+import { Icon} from 'react-native-elements'; 
+
 
 export default class ChatBox extends React.Component {
        static navigationOptions={
-        tabBarLabel:'ChatBox'
+        header: null,     
+        tabBarLabel:'ChatBox',
+        tabBarIcon:()=> {
+            return <Icon name="chat" size={25} color={"white"}/>
+        }
     }
     constructor(props) {
         super(props);
@@ -23,6 +29,7 @@ export default class ChatBox extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
+
                 <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}
@@ -65,5 +72,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         opacity: 0.8,
         fontWeight: '700'
+    },
+    icon:{
+        width:22,
+        height:22
     }
+
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
+import { Icon} from 'react-native-elements'; 
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height;
@@ -10,7 +11,11 @@ const LATITUDE_DELTA = 0.0922;
 const LONGTITUDE_DELTA = LATITUDE_DELTA * ASPECT_PATIO;
 export default class Map extends React.Component {
     static navigationOptions = {
-        tabBarLabel: 'GoogleMap'
+        header: null,     
+        tabBarLabel: 'Map',
+        tabBarIcon:()=> {
+            return <Icon  name="location-on" size={25} color={"white"}/>
+        }
     };
     constructor(props) {
         super(props);

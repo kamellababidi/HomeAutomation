@@ -11,9 +11,33 @@ var MainScreenNavigator = TabNavigator({
     Profile: { screen: Profile },
     GoogleMap: { screen: Map },
     Controle: { screen: Controle },
-    ChatBox: { screen: ChatBox },
-    Main: {screen: Main}
-});
+    ChatBox: { screen: ChatBox }
+    //Main: {screen: Main}
+},{
+    tabBarPosition:'top',
+    swipeEnabled:true,
+    animationEnabled: false,
+    lazy: true,
+    tabBarOptions: {
+        header: null,    
+        upperCaseLabel: false,
+        showIcon: true,
+        style: {
+         
+            backgroundColor: '#b30047'
+          },
+          indicatorStyle: {
+            backgroundColor: 'white'
+          },
+          labelStyle: {
+            fontSize: 14,
+            color: 'white',
+            fontFamily: 'impact'
+          },
+
+    }
+}
+);
 MainScreenNavigator.navigationOptions = {
     title: 'please work'
 };
