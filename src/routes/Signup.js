@@ -22,7 +22,7 @@ export default class Signup extends React.Component {
     }
     async Signup() {
         try {
-            let response = await fetch('http://192.168.8.120:8000/signup', {
+            let response = await fetch('http://192.168.2.46:8000/signup', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -144,12 +144,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         paddingHorizontal: 10,
         backgroundColor: '#E0FFFF',
-        color: '#C71585',
+        color: '#b30047',
         paddingHorizontal: 10,
         textAlign: 'center'
     },
     buttonContainer: {
-        backgroundColor: '#C71585',
+        backgroundColor: '#b30047',
         paddingVertical: 15
     },
     buttonText: {
