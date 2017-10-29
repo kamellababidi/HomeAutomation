@@ -6,9 +6,11 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    Button,
+    Alert,
     KeyboardAvoidingView
 } from 'react-native';
-
+const ImagePicker = require('react-native-image-picker');
 export default class Signup extends React.Component {
     constructor() {
         super()
@@ -18,9 +20,18 @@ export default class Signup extends React.Component {
             image: ''
         };
     }
+    async getCureentUser() {
+        try {
+                 let response = await fetch('http://192.168.1.17:8080/user');
+                 let responseJson = await response.json();
+                 this.setState({name:responseJson.name})
+           } catch(error) {
+             console.error(error);
+             }
+    } 
     async Signup() {
         try {
-            let response = await fetch('http://192.168.8.115:8000/signup', {
+            let response = await fetch('http://192.168.1.17:8080/signup', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -29,16 +40,63 @@ export default class Signup extends React.Component {
                 body: JSON.stringify({
                     user: {
                         username: this.state.username,
-                        passwors: this.state.password,
-                        email: this.state.email
+                        password: this.state.password,
+                        email: this.state.email,
+                        image: this.state.image
                     }
                 })
             });
 
             let res = await response.text();
+            console.log(res)
+            res=JSON.parse(res)
+            if(res == "exist"){
+                Alert.alert("this user is already exist")
+                
+            }else{
+                Alert.alert("Done ,, Now you can go to Login")
+                return this.props.changeV('Login') 
+                
+            }
         } catch (errors) {
             console.log('catch errors' + errors);
         }
+    }
+     pick(){
+        var options = {
+              title: 'Select profile image',
+              customButtons: [
+                {name: 'fb', title: 'Choose Photo from Facebook'},
+              ],
+              storageOptions: {
+                skipBackup: true,
+                path: 'images'
+              }
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+          console.log('Response = ', response);
+
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          }
+          else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          }
+          else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          }
+          else {
+            let source = { uri: response.uri };
+
+            // You can also display the image using data:
+            // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+            this.setState({
+              image: source.uri
+            });
+          }
+        });
     }
     render() {
         return (
@@ -58,6 +116,7 @@ export default class Signup extends React.Component {
                     <TextInput
                         placeholder="username"
                         returnKeyType="next"
+                        validators="required"
                         onChangeText={value =>
                             this.setState({ username: value })}
                         placeholderTextColor="#800080"
@@ -67,6 +126,7 @@ export default class Signup extends React.Component {
                     <TextInput
                         placeholder="password"
                         secureTextEntry={true}
+                        validators="required"
                         returnKeyType="next"
                         onChangeText={value =>
                             this.setState({ password: value })}
@@ -77,10 +137,15 @@ export default class Signup extends React.Component {
                     <TextInput
                         placeholder="email"
                         returnKeyType="go"
+                        validators="required"
                         onChangeText={value => this.setState({ email: value })}
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
+                     <Button
+                    title="Select image"
+                    onPress={() => this.pick()}
+                     />
                     <TouchableOpacity
                         style={styles.buttonContainer}
                         onPress={() => this.Signup()}

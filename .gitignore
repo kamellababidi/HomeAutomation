@@ -1,4 +1,5 @@
 node_modules/
+android/
 bower_components/
 *.log
 build/

@@ -6,6 +6,7 @@ var db=require('./db/dbConnection');
 var session =require("express-session");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var bcrypt=require("bcrypt-nodejs")
 app.use(function (req, res, next) {
 
    // Website you wish to allow to connect
@@ -37,6 +38,9 @@ app.use(session({
     saveUninitialized: true
 }));
 
+
+
+
 //scan in bluetooth 
 app.get('/scan',(req,res) =>{
 	const devices={
@@ -64,26 +68,60 @@ app.get('/connect',(req,res)=>{
 			console.log('connected')
 			connect=connection
 			//connection.write('1', 'utf-8');
-			res.send('doneeee')
+			res.send(JSON.stringify('doneeee'));
 		}
 	})
+})
+
+// handle motion sensor
+app.get('/motion',(req,res) =>{
+	var buf= new Buffer('d', 'utf-8')
+	var x="dd";
+	console.log("motion")
+	connect.write(new Buffer(buf),function(){
+		connect.on('data', (buffer) => {
+		   
+		console.log("hiiiiiii")
+		//console.log(buffer)
+		buf=buffer.toString('utf-8')
+     console.log(buffer.toString('utf-8'));
+    // console.log(str.split('/n', 0, 2))
+    // x=buffer.toString();
+    // res.set('Content-Type', 'text/plain');
+    // res.status(200);
+    // return res.send(JSON.stringify("ffff"))
+    
+    // //return res.send(JSON.stringify(x))
+    // //console.log("the x is===> ",x)
+  });
+	});
+	//setTimeout(function(){}, 2000);
+	
+	//setTimeout(function(){return res.send(JSON.stringify(x))}, 2000);
+ 	//return res.send();
+ setTimeout(function(){
+ 	console.log("hhhhhhh",buf.toString("utf-8")); 
+ 	return res.json(buf.toString("utf-8"))
+ }, 1000);
+
 })
 //turn on the lights
 app.get('/on',(req,res)=>{
 	connect.write(new Buffer('1', 'utf-8'),function(){});
-	res.send('on')
+	res.send(JSON.stringify('on'))
 })
 
 //turn off the lights 
 app.get('/off',(req,res)=>{
 	connect.write(new Buffer('0', 'utf-8'),function(){});
-	res.send('off')
+
+	res.send(JSON.stringify('off'))
 })
 //signup user
 app.post('/signup',(req,res)=>{
 	console.log("comming data =======>", req.body.user)
 	//checck if user allready exist  
-	var sql="select * from user1 where name='"+req.body.user.username+"';";
+	var sql="select * from user where name='"+req.body.user.username+"';";
 	db.query(sql,function(err,result){
 		if(err){
 			throw err
@@ -94,8 +132,10 @@ app.post('/signup',(req,res)=>{
 			res.status(200)
 			return res.send(JSON.stringify("exist"));
 		}
+
+		bcrypt.hash(req.body.user.password, null, null, function(err, hash){
 		//else insert it into database
-		var sql="insert into user1 (name,passward) values ('"+req.body.user.username+"',"+req.body.user.password+");";
+		var sql="insert into user (name,password,image) values ('"+req.body.user.username+"','"+hash+"','"+req.body.user.image+"');";
 		db.query(sql,function(err,result){
 			if(err){
 				throw err
@@ -103,39 +143,67 @@ app.post('/signup',(req,res)=>{
 			res.status(200);
 			return res.send(JSON.stringify("inserted"));
 		})
-		
+		})
 	})
 });
 //login user 
-app.post('login',(req,res)=>{
-	console.log("hiiiiiii")
+app.post('/login',(req,res)=>{
+	console.log(req.body)
 	//check if username exist
-	var sql="select * from user1 where name='"+req.body.user.username+"';"
+	var sql="select * from user where name='"+req.body.user.username+"';"
 	db.query(sql,(err,result)=>{
+		console.log("the result is ====> ",result)
 		if(err)
-			throw err
+			console.log("errrrror")
 		if(result.length){
 			//check password
-			if(result[0].passward=req.body.user.password){
+			console.log(req.body.user.password)
+			console.log("resullllt",result[0].password)
+
+			bcrypt.compare(req.body.user.password, result[0].password, function(err, hash){
+
+			if(hash){
 				//create session 
-				req.session.username=result[0].username;
+				req.session.username=result[0].name;
 				req.session.password=result[0].password;
-				return res.send(JSON("done"));
+				console.log("the session is ===> ",req.session)
+				return res.send(JSON.stringify("done"));
 			}else{
 				return res.send(JSON.stringify("not exist"));
 			}
+		})
 
 		}else{
 			return res.send(JSON.stringify("not exist"));
 		}
 	})
 })
+//ligout
+app.get('/logout', function(req,res){
+    req.session.destroy(function(err) {
+      err ? console.log(err) : console.log('deleted')
+      res.send(JSON.stringify("ended"))
+      })
+})
+app.get('/user',(req,res) =>{
+	////
+	var sql="select * from user where name='"+req.session.username+"';";
+	db.query(sql,(err,result)=>{
+		if(err){
+			throw err
+		}
+		console.log("sssssssssssssssssss",result)
+		return res.send(JSON.stringify(result[0]))
+	})
+
+	///
+	
+})
 //specify port number
-var port = process.env.PORT||8000;
+var port = process.env.PORT||8080;
 //run the server 
 app.listen(port,(err) =>{
 	if(err)
 		throw err
 	console.log('listening on 8000')
 })
-

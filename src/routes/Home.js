@@ -1,30 +1,20 @@
-// import React from 'react';
-// import {
-//     StyleSheet,
-//     View,
-//     Text,
-//     Image,
-//     TextInput,
-//     TouchableOpacity,
-//     KeyboardAvoidingView
-// } from 'react-native';
-// import {Actions} from 'react-native-router-flux';
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { TabNavigator } from 'react-navigation';
+import Profile from './Profile';
+import ChatBox from './ChatBox';
+import Main from './Main';
+import Controle from './Controle';
+import Map from './map';
 
-
-// export default class Login extends React.Component {
-
-
-
-//     render(){
-//         return (
-//             <View>
-//                 <TouchableOpacity
-//                         /* style={styles.buttonContainer}
-//                         onPress={() => Actions.login{()}} */
-//                     >
-//                         <Text>Go to Signup</Text>
-//                     </TouchableOpacity>
-//                     </View> 
-//         )
-//     }
-// }
+var MainScreenNavigator = TabNavigator({
+    Profile: { screen: Profile },
+    GoogleMap: { screen: Map },
+    Controle: { screen: Controle },
+    ChatBox: { screen: ChatBox },
+    Main: {screen: Main}
+});
+MainScreenNavigator.navigationOptions = {
+    title: 'please work'
+};
+export default MainScreenNavigator;
