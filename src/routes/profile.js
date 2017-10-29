@@ -34,10 +34,24 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-             <View>
-                <Text>hiiiii</Text>
+            <KeyboardAvoidingView behavior="padding" style={styles.container}>
+            
+                <View style={styles.logoContainer}>
+                    <Image
+                        style={styles.logo}
+                        source={require('./Smart.png')}
+                    />
+                    </View>
+
+               
+                <Text style={styles.header}>
+                    
+                    setting hereeee but not ready yet
+                </Text>
+                <View>
                 <Image source={{uri: this.state.image}} style={{width: 60, height: 60}} />
                 </View>
+                </KeyboardAvoidingView>
 
             
         )
