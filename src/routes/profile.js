@@ -16,8 +16,7 @@ export default class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            init:this.getCureentUser(),
-            image:"https://i.ytimg.com/vi/kRZsOgniUMI/hqdefault.jpg"
+            init:this.getCureentUser()
         }
 
     }
@@ -43,7 +42,7 @@ export default class Profile extends React.Component {
                     />
                     </View>
 
-               
+                
                 <Text style={styles.header}>
                     
                     setting hereeee but not ready yet
