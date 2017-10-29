@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: 'sql2.freemysqlhosting.net',
-    user: 'sql2200708',
-    password: 'wS3*iZ6%',
-    database: 'sql2200708'
+    host: 'localhost',
+    user: 'root',
+    password: '1234',
+    database: 'users'
 });
 
 connection.connect(function(err) {
@@ -22,14 +22,14 @@ connection.connect(function(err) {
      //        console.log('CREATE TABLE usre');
      //    });
 
-      // console.log("connected to db")
-      //   var sql2 = 
-      //   'CREATE TABLE components (id INT AUTO_INCREMENT PRIMARY KEY, component varchar (200))';
-      //   connection.query(sql2, function(err, result){
-      //       if(err){
-      //           throw err;
-      //       }
-      //       console.log('CREATE TABLE components');
-      //   });
+     //  console.log("connected to db")
+     //    var sql2 = 
+     //    'CREATE TABLE components (id INT AUTO_INCREMENT PRIMARY KEY, component varchar (200))';
+     //    connection.query(sql2, function(err, result){
+     //        if(err){
+     //            throw err;
+     //        }
+     //        console.log('CREATE TABLE components');
+     //    });
     });
 module.exports = connection;

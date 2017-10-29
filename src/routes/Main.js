@@ -26,7 +26,7 @@ export default class Main extends React.Component {
     //logout
     async logout() {
         try {
-                 let response = await fetch('http://192.168.8.103:8000/logout');
+                 let response = await fetch('http://192.168.1.17:8080/logout');
                  let responseJson = await response.json();
                  this.setState({logout:responseJson})
                  // return this.props.changeV('Login');
@@ -37,9 +37,9 @@ export default class Main extends React.Component {
     //get current user
     async getCureentUser() {
 	    try {
-			     let response = await fetch('http://192.168.8.103:8000/user');
+			     let response = await fetch('http://192.168.1.17:8080/user');
 			     let responseJson = await response.json();
-			     this.setState({name:responseJson})
+			     this.setState({name:responseJson.name})
 		   } catch(error) {
 		     console.error(error);
 		     }

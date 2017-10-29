@@ -145,6 +145,7 @@ dependencies {
     compile project(':RNPermissionsModule')
     compile project(':VoiceModule')
     compile project(':react-native-android-speech')
+    compile project(':react-native-image-picker')
 }
 
 

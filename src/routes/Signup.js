@@ -10,7 +10,7 @@ import {
     Alert,
     KeyboardAvoidingView
 } from 'react-native';
-
+const ImagePicker = require('react-native-image-picker');
 export default class Signup extends React.Component {
     constructor() {
         super()
@@ -20,9 +20,18 @@ export default class Signup extends React.Component {
             image: ''
         };
     }
+    async getCureentUser() {
+        try {
+                 let response = await fetch('http://192.168.1.17:8080/user');
+                 let responseJson = await response.json();
+                 this.setState({name:responseJson.name})
+           } catch(error) {
+             console.error(error);
+             }
+    } 
     async Signup() {
         try {
-            let response = await fetch('http://192.168.8.103:8000/signup', {
+            let response = await fetch('http://192.168.1.17:8080/signup', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -32,7 +41,8 @@ export default class Signup extends React.Component {
                     user: {
                         username: this.state.username,
                         password: this.state.password,
-                        email: this.state.email
+                        email: this.state.email,
+                        image: this.state.image
                     }
                 })
             });
@@ -51,6 +61,42 @@ export default class Signup extends React.Component {
         } catch (errors) {
             console.log('catch errors' + errors);
         }
+    }
+     pick(){
+        var options = {
+              title: 'Select profile image',
+              customButtons: [
+                {name: 'fb', title: 'Choose Photo from Facebook'},
+              ],
+              storageOptions: {
+                skipBackup: true,
+                path: 'images'
+              }
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+          console.log('Response = ', response);
+
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          }
+          else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          }
+          else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          }
+          else {
+            let source = { uri: response.uri };
+
+            // You can also display the image using data:
+            // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+            this.setState({
+              image: source.uri
+            });
+          }
+        });
     }
     render() {
         return (
@@ -96,6 +142,10 @@ export default class Signup extends React.Component {
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
+                     <Button
+                    title="Select image"
+                    onPress={() => this.pick()}
+                     />
                     <TouchableOpacity
                         style={styles.buttonContainer}
                         onPress={() => this.Signup()}

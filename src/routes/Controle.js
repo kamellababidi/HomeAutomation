@@ -121,7 +121,7 @@ export default class Controle extends React.Component {
     }
     async motion() {
         try {
-                 let response = await fetch('http://192.168.8.103:8000/motion');
+                 let response = await fetch('http://192.168.1.17:8080/motion');
                  let responseJson = await response.json();
                  //responseJson=JSON.parse(responseJson)
                  
@@ -140,16 +140,16 @@ export default class Controle extends React.Component {
     //get current user
     async getCureentUser() {
 	    try {
-			     let response = await fetch('http://192.168.8.103:8000/user');
+			     let response = await fetch('http://192.168.1.17:8080/user');
 			     let responseJson = await response.json();
-			     this.setState({name:responseJson})
+			     this.setState({name:responseJson.name})
 		   } catch(error) {
 		     console.error(error);
 		     }
     } 
      async connect(){
     	 try {
-			     let response = await fetch('http://192.168.8.103:8000/connect');
+			     let response = await fetch('http://192.168.1.17:8080/connect');
 			     let responseJson = await response.json();
 			     if(responseJson){
 			     	Alert.alert("Connected")
@@ -161,7 +161,7 @@ export default class Controle extends React.Component {
     }
     async turnon(){
     	 try {
-			     let response = await fetch('http://192.168.8.103:8000/on');
+			     let response = await fetch('http://192.168.1.17:8080/on');
 			     let responseJson = await response.json();
 			   
 		   } catch(error) {
@@ -170,13 +170,14 @@ export default class Controle extends React.Component {
     }
     async turnoff(){
     	 try {
-			     let response = await fetch('http://192.168.8.103:8000/off');
+			     let response = await fetch('http://192.168.1.17:8080/off');
 			     let responseJson = await response.json();
 			    
 		   } catch(error) {
 		     console.error(error);
 		     }
     }
+   
 
     render() {
         return (
