@@ -1,12 +1,13 @@
+global.self = global;
 import React from 'react';
 import {
     StyleSheet,
     View,
     Text,
     KeyboardAvoidingView,
+    TouchableHighlight,
     TouchableOpacity,
     Image,
-    Button,
     Alert
 
     
@@ -18,9 +19,11 @@ export default class Profile extends React.Component {
            static navigationOptions={
         header: null,    
         tabBarLabel:'Profile',
-        tabBarIcon:()=> {
-            return <Icon name="people" size={25} color={"white"}/>
-        }
+        tabBarIcon:({tintColor}) => (
+        <Image source={require('./icon/pro.png')}
+         style={{width:24, height:24, tintColor:'white'}}>
+        </Image>
+       ) 
     }
     constructor(props) {
         super(props);
@@ -161,38 +164,41 @@ export default class Profile extends React.Component {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
             
-                <View style={styles.logoContainer}>
-                    <Image
-                        style={styles.logo}
-                        source={require('./Smart.png')}
-                    />
-                    </View>
-                     <Text style={styles.header}>
-                    {' '}
-                    {this.state.name}
-                        </Text>
-
-                <Button
-                        title="Change username"
-                        onPress={() => this.ChangeName()}
-                />
-                <Button
-                        title="Change profile picture"
-                        onPress={() => this.ChangePicture()}
-                />
-                <View>
-                <Image source={{uri: this.state.image}} style={{width: 60, height: 60}} />
+               
+                                <View>
+                <Image 
+                style={styles.image}
+                resizeMode="cover"
+                source={{uri: this.state.image}}/>
                 </View>
 
-                 <View style={styles.buttonContainer} >
-                            
+                     <Text style={styles.header}>
+                        {this.state.name}
+                        </Text>
+
+                
+
                 <TouchableOpacity
+                style={styles.buttonContainer}
+                        onPress={() => this.ChangeName()}>
+                        <Text style={styles.buttonText}> Change username </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+               style={styles.buttonContainer}
+                        onPress={() => this.ChangePicture()}>
+                         <Text style={styles.buttonText}> Change profile picture</Text>
+                </TouchableOpacity>
+
+
+                 
+                            
+                <TouchableHighlight
                 style={styles.buttonContainer}
                     onPress={() => this.logout()}>
                     <Text style={styles.buttonText}>Log out</Text>
-                    </TouchableOpacity> 
+                    </TouchableHighlight> 
 
-                </View>
+              
 
                 </KeyboardAvoidingView>
 
@@ -222,10 +228,35 @@ const styles = StyleSheet.create({
     header: {
         color: '#fff',
         marginTop: 5,
+        marginBottom:40,
         textAlign: 'center',
         opacity: 0.8,
-        fontWeight: '700'
-    }
+        fontWeight: '700',
+        fontSize:30
+    },
+    buttonContainer: {
+        backgroundColor: '#94336A',
+        paddingVertical: 15,
+        marginBottom: 20,
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#4F1335',
+        height: 40,
+        width: 200
+    },
+    buttonText: {
+      marginTop: -5,
+      textAlign: 'center',
+      color: '#000000',
+      fontWeight: '700'
+    },
+    image: {
+      height: 200,
+      width: 200,
+      borderRadius: 100,
+      borderWidth: 3,
+      borderColor: '#94336A'
+  }
 });
 
 

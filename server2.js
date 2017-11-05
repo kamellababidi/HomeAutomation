@@ -131,6 +131,29 @@ setTimeout(function(){
 }, 1000);
 })
 
+// Get the alert from gas sensor 
+app.get('/gas',(req,res) =>{
+  if(connect==undefined){
+    console.log("please connect first")
+    return res.send(JSON.stringify("p"))
+  }
+    var buf= new Buffer('i', 'utf-8')
+    var x="Gas ";
+    console.log("Gas ")
+    connect.write(new Buffer(buf),function(){
+        connect.on('data', (buffer) => {
+          
+        console.log("Gas sensor")
+        buf=buffer.toString('utf-8')
+    console.log(buf);
+ });
+    });
+setTimeout(function(){
+    console.log("Gas",buf.toString("utf-8"));
+    return res.json(buf.toString("utf-8"))
+}, 2000);
+})
+
 //turn on the lights
 app.get('/on',(req,res)=>{
   connect.write(new Buffer('1', 'utf-8'),function(){});

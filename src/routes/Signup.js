@@ -1,3 +1,4 @@
+global.self = global;
 import React from 'react';
 import {
     StyleSheet,
@@ -6,8 +7,10 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    TouchableHighlight,
     Button,
     Alert,
+    Platform,
     KeyboardAvoidingView
 } from 'react-native';
 const ImagePicker = require('react-native-image-picker');
@@ -92,7 +95,8 @@ ImagePicker.showImagePicker(options, (response) => {
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
-                <View style={styles.container}>
+            
+                
                     <View style={styles.logoContainer}>
                         <Image
                             style={styles.logo}
@@ -100,14 +104,13 @@ ImagePicker.showImagePicker(options, (response) => {
                         />
                     </View>
                     <Text style={styles.header}>
-                        {' '}
                         Welcome to the Home Automation System
                     </Text>
-
+                    <View>
                     <TextInput
                         placeholder="username"
-                        returnKeyType="next"
-                        validators="required"
+                        autoCapitalize="none"
+                        returnKeyType="next"                        
                         onChangeText={value =>
                             this.setState({ username: value })}
                         placeholderTextColor="#800080"
@@ -117,8 +120,7 @@ ImagePicker.showImagePicker(options, (response) => {
                     <TextInput
                         placeholder="password"
                         secureTextEntry={true}
-                        validators="required"
-                        returnKeyType="next"
+                        returnKeyType="next"                        
                         onChangeText={value =>
                             this.setState({ password: value })}
                         placeholderTextColor="#800080"
@@ -128,27 +130,34 @@ ImagePicker.showImagePicker(options, (response) => {
                     <TextInput
                         placeholder="email"
                         returnKeyType="go"
+                        keyboardType="email-address"
                         validators="required"
                         onChangeText={value => this.setState({ email: value })}
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
-                     <Button
-                    title="Pick image"
-                    onPress={() => this.pick()}
-                    />
-                    <TouchableOpacity
-                        style={styles.buttonContainer}
-                        onPress={() => this.Signup()}
-                    >
-                        <Text style={styles.buttonText}>Submit</Text>
+                      <TouchableOpacity
+                         style={styles.buttonContainer}
+                         onPress={() => this.pick()} >
+                    <Text style={styles.buttonText}>Pick image</Text>
                     </TouchableOpacity>
 
-                    <Button
-                    title="Go back to Login"
-                    onPress={() => this.props.changeV('Login')}
-                />
-                </View>
+                     </View>
+                    <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>
+
+                    <TouchableHighlight
+                        style={styles.buttonRow}
+                        onPress={() => this.Signup()} >
+                        <Text style={styles.buttonText}>Submit</Text>
+                    </TouchableHighlight>
+
+                    <TouchableHighlight
+                    style={styles.buttonRow}
+                    onPress={() => this.props.changeV('Login')} >
+                        <Text style={styles.buttonText}>Go back to Login</Text>
+                    </TouchableHighlight>
+               
+                    </View>
             </KeyboardAvoidingView>
         );
     }
@@ -159,9 +168,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#87CEFA',
         alignItems: 'center',
+        paddingHorizontal: 20,
+        paddingTop: 20,
         justifyContent: 'center'
     },
-    formContainer: {},
+    
     logoContainer: {
         alignItems: 'center',
         flexGrow: 1,
@@ -177,7 +188,9 @@ const styles = StyleSheet.create({
         marginTop: 5,
         textAlign: 'center',
         opacity: 0.8,
-        fontWeight: '700'
+        marginBottom: 30,
+        fontWeight: '700',
+        fontSize :20
     },
     input: {
         height: 40,
@@ -185,17 +198,34 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         paddingHorizontal: 10,
         backgroundColor: '#E0FFFF',
-        color: '#C71585',
+        color: '#94336A',
         paddingHorizontal: 10,
         textAlign: 'center'
     },
     buttonContainer: {
-        backgroundColor: '#C71585',
-        paddingVertical: 15
+        backgroundColor: '#94336A',
+        paddingVertical: 15,
+        marginBottom: 20,
+        height: 40,
+        width: 200
     },
     buttonText: {
+        marginTop: -5,
         textAlign: 'center',
-        color: '#000000',
+        color: '#ffffff',
         fontWeight: '700'
+    },
+    buttonRow :{    
+        backgroundColor: '#4F1335',
+        paddingVertical: 15,
+        alignItems: 'center',
+        marginBottom: 20,
+        marginLeft: 40,
+        marginRight: 5,
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#94336A',
+        height: 40,
+        width: 140
     }
 });

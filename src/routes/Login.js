@@ -1,3 +1,4 @@
+global.self = global;
 import React from 'react';
 import {
     StyleSheet,
@@ -5,6 +6,7 @@ import {
     Text,
     Image,
     TouchableOpacity,
+    TouchableHighlight,
     TextInput,
     Button,
     Alert,
@@ -57,17 +59,17 @@ export default class Login extends React.Component {
                     />
                 </View>
                 <Text style={styles.header}>
-                    {' '}
                     Welcome to the Home Automation System
                 </Text>
 
-                <View style={styles.container}>
+                <View>
                     <TextInput
                         placeholder="username"
                         returnKeyType="next"
                         validators="required"
+                        onSubmitEditing={()=> this.passwordInput.focus()}
                         onChangeText={value =>
-                            this.setState({ username: value })}
+                        this.setState({ username: value })}
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
@@ -77,22 +79,28 @@ export default class Login extends React.Component {
                         secureTextEntry={true}
                         validators="required"
                         returnKeyType="go"
+                        ref={(Input)=> this.passwordInput = Input}
                         onChangeText={value =>
-                            this.setState({ password: value })}
+                        this.setState({ password: value })}
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
-                    <TouchableOpacity
-                        style={styles.buttonContainer}
+                    <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>
+                    <TouchableHighlight
+                        style={styles.buttonRow}
                         onPress={() => this.Login()}
                     >
                         <Text style={styles.buttonText}>Submit</Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
 
-                    <Button
-                        title="Go to Signup"
+                    <TouchableHighlight
+                        style={styles.buttonRow}
                         onPress={() => this.props.changeV('Signup')}
-                    />
+                    >
+                        <Text style={styles.buttonText}>Go to Signup</Text>
+                    </TouchableHighlight>
+
+                    </View>
                 </View>
             </KeyboardAvoidingView>
         );
@@ -104,13 +112,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#87CEFA',
         alignItems: 'center',
+        padding: 60,
         justifyContent: 'center'
     },
-    formContainer: {},
+    
     logoContainer: {
+        justifyContent: 'center',
         alignItems: 'center',
         flexGrow: 1,
-        justifyContent: 'center'
+        paddingBottom : 30,
+        marginBottom: 35
     },
 
     logo: {
@@ -119,28 +130,47 @@ const styles = StyleSheet.create({
     },
     header: {
         color: '#fff',
+        marginBottom:0,
         marginTop: 5,
+        marginBottom: 30,
         textAlign: 'center',
         opacity: 0.8,
-        fontWeight: '700'
+        fontWeight: '700',
+        fontSize :20
     },
     input: {
-        height: 40,
-        marginBottom: 20,
+        marginBottom: 20,   
         paddingHorizontal: 10,
         backgroundColor: '#E0FFFF',
-        color: '#C71585',
-        paddingHorizontal: 10,
-        width: 200,
-        textAlign: 'center'
+        marginLeft: 85,
+        textAlign: 'center',
+        justifyContent: 'center',
+        color: '#94336A',  
+        height: 40,      
+        width: 200
+        
     },
     buttonContainer: {
-        backgroundColor: '#C71585',
+        backgroundColor: '#94336A',
         paddingVertical: 15
     },
     buttonText: {
+        marginTop: -5,
         textAlign: 'center',
-        color: '#000000',
+        color: '#ffffff',
         fontWeight: '700'
+    },
+        buttonRow :{    
+        backgroundColor: '#4F1335',
+        paddingVertical: 15,
+        alignItems: 'center',
+        marginBottom: 100,
+        marginLeft: 40,
+        marginRight: 5,
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: '#94336A',
+        height: 40,
+        width: 140
     }
 });
