@@ -118,6 +118,7 @@ export default class ChatBox extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: 'rgb(135, 206, 250)',
