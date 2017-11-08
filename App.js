@@ -49,7 +49,8 @@ export default class App extends React.Component {
       } else if (this.state.component == 'Login') {
           return <Login changeV={this.changestate.bind(this)} />;
       } else if (this.state.component=='Home') {
-          return <MainScreenNavigator changeV={this.changestate.bind(this)} />;
+          return <MainScreenNavigator
+          screenProps={{changeV:this.changestate.bind(this)}}  />;
       } 
   }
 }

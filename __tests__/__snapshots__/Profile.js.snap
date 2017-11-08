@@ -18,19 +18,19 @@ exports[`Search snapshot test 1`] = `
     ]
   }
 >
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "flexGrow": 1,
-        "justifyContent": "center",
-      }
-    }
-  >
+  <View>
     <Image
-      source={1}
+      resizeMode="cover"
+      source={
+        Object {
+          "uri": "a",
+        }
+      }
       style={
         Object {
+          "borderColor": "#94336A",
+          "borderRadius": 100,
+          "borderWidth": 3,
           "height": 200,
           "width": 200,
         }
@@ -45,24 +45,21 @@ exports[`Search snapshot test 1`] = `
     style={
       Object {
         "color": "#fff",
+        "fontSize": 30,
         "fontWeight": "700",
+        "marginBottom": 40,
         "marginTop": 5,
         "opacity": 0.8,
         "textAlign": "center",
       }
     }
   >
-     
     
   </Text>
   <View
-    accessibilityComponentType="button"
+    accessibilityComponentType={undefined}
     accessibilityLabel={undefined}
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
+    accessibilityTraits={undefined}
     accessible={true}
     collapsable={undefined}
     hitSlop={undefined}
@@ -77,146 +74,138 @@ exports[`Search snapshot test 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
+        "backgroundColor": "#94336A",
+        "borderColor": "#4F1335",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "height": 40,
+        "marginBottom": 20,
         "opacity": 1,
+        "paddingVertical": 15,
+        "width": 200,
       }
     }
     testID={undefined}
     tvParallaxProperties={undefined}
   >
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "color": "#007AFF",
-              "fontSize": 18,
-              "padding": 8,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Change username
-      </Text>
-    </View>
-  </View>
-  <View
-    accessibilityComponentType="button"
-    accessibilityLabel={undefined}
-    accessibilityTraits={
-      Array [
-        "button",
-      ]
-    }
-    accessible={true}
-    collapsable={undefined}
-    hitSlop={undefined}
-    isTVSelectable={true}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "opacity": 1,
-      }
-    }
-    testID={undefined}
-    tvParallaxProperties={undefined}
-  >
-    <View
-      style={
-        Array [
-          Object {},
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "color": "#007AFF",
-              "fontSize": 18,
-              "padding": 8,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Change profile picture
-      </Text>
-    </View>
-  </View>
-  <View>
-    <Image
-      source={
-        Object {
-          "uri": "a",
-        }
-      }
-      style={
-        Object {
-          "height": 60,
-          "width": 60,
-        }
-      }
-    />
-  </View>
-  <View
-    style={undefined}
-  >
-    <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
+    <Text
       accessible={true}
-      collapsable={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
       style={
         Object {
-          "opacity": 1,
+          "color": "#000000",
+          "fontWeight": "700",
+          "marginTop": -5,
+          "textAlign": "center",
         }
       }
-      testID={undefined}
-      tvParallaxProperties={undefined}
     >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={undefined}
-      >
-        Log out
-      </Text>
-    </View>
+       Change username 
+    </Text>
+  </View>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#94336A",
+        "borderColor": "#4F1335",
+        "borderRadius": 10,
+        "borderWidth": 1,
+        "height": 40,
+        "marginBottom": 20,
+        "opacity": 1,
+        "paddingVertical": 15,
+        "width": 200,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#000000",
+          "fontWeight": "700",
+          "marginTop": -5,
+          "textAlign": "center",
+        }
+      }
+    >
+       Change profile picture
+    </Text>
+  </View>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+        },
+        Object {
+          "backgroundColor": "#94336A",
+          "borderColor": "#4F1335",
+          "borderRadius": 10,
+          "borderWidth": 1,
+          "height": 40,
+          "marginBottom": 20,
+          "paddingVertical": 15,
+          "width": 200,
+        },
+      ]
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#000000",
+          "fontWeight": "700",
+          "marginTop": -5,
+          "textAlign": "center",
+        }
+      }
+    >
+      Log out
+    </Text>
   </View>
 </View>
 `;

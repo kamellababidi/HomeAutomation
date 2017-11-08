@@ -105,7 +105,7 @@ export default class Profile extends React.Component {
                      let response = await fetch('https://home99.herokuapp.com/logout');
                      let responseJson = await response.json();
                      this.setState({logout:responseJson})
-                     return this.props.changeV('Login');
+                     this.props.screenProps.changeV('Login');
                } catch(error) {
                  console.error(error);
                  }
@@ -258,5 +258,4 @@ const styles = StyleSheet.create({
       borderColor: '#94336A'
   }
 });
-
 
