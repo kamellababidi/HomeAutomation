@@ -1,4 +1,4 @@
-global.self = global;
+
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { TabNavigator } from 'react-navigation';

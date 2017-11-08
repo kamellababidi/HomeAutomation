@@ -1,4 +1,4 @@
-global.self = global;
+
 import React from 'react';
 import {
     StyleSheet,
@@ -135,6 +135,7 @@ export default class Signup extends React.Component {
                         <Text style={styles.buttonText}>Pick image</Text>
                     </TouchableOpacity>
                 </View>
+
                 <View
                     style={{
                         flex: 0,
@@ -156,6 +157,13 @@ export default class Signup extends React.Component {
                         <Text style={styles.buttonText}>Go back to Login</Text>
                     </TouchableHighlight>
                 </View>
+
+                 <TouchableHighlight
+                   
+                        onPress={() => this.props.changeV('AboutUs')}
+                    >
+                        <Text style={{color:'blue'}}>About Us → </Text>
+                    </TouchableHighlight>
             </KeyboardAvoidingView>
         );
     }

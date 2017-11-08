@@ -1,15 +1,16 @@
 import React from 'react';
+
 import { StyleSheet, View, Dimensions,Image ,Alert } from 'react-native';
+
+
 import MapView from 'react-native-maps';
 import { Icon} from 'react-native-elements'; 
-
 const { width, height } = Dimensions.get('window');
 const SCREEN_HEIGHT = height;
 const SCREEN_WIDTH = width;
 const ASPECT_PATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGTITUDE_DELTA = LATITUDE_DELTA * ASPECT_PATIO;
-
 var rad = function(x) {
   return x * Math.PI / 180;
 };
@@ -67,19 +68,19 @@ export default class Map extends React.Component {
     //Errror Callback
                  console.log(error)
             });
-        Alert.alert(
+       Alert.alert(
   'Warning',
-  'you are around '+this.state.dist+',do you want to open garag door?',
+  'My Alert Msg',
   [
-    {text: 'Ask me later', onPress: () => Alert.alert('Ask me later pressed')},
-    {text: 'Cancel', onPress: () => Alert.alert('Cancel Pressed'), style: 'cancel'},
-        Alert.alert(
-  'you are around '+this.state.dist+',do you want to open garag door?',
-  [
+    {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
     {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+    {text: 'OK', onPress: () => console.log('OK Pressed')},
+  ],
+  { cancelable: false }
+)
+    }
 
-
-    async sendaction() {
+    async sendaction(){
         //turn on the light
         try {
                  let response = await fetch('http://192.168.8.106:8000/onL');
@@ -89,8 +90,8 @@ export default class Map extends React.Component {
            } catch(error) {
              console.error(error);
              }
-            }     
- 
+
+    }
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -104,6 +105,9 @@ export default class Map extends React.Component {
                 };
                 this.setState({ initialPosition: initialRegion });
                 this.setState({ markerPosition: initialRegion });
+                
+            
+    
             
             },
             error => console.log(JSON.stringify(new Date(), error)),
