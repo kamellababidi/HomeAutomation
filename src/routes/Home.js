@@ -1,3 +1,4 @@
+global.self = global;
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { TabNavigator } from 'react-navigation';
@@ -7,11 +8,12 @@ import Main from './Main';
 import Controle from './Controle';
 import Map from './map';
 
+
 var MainScreenNavigator = TabNavigator({
     Profile: { screen: Profile },
     GoogleMap: { screen: Map },
     Controle: { screen: Controle },
-    ChatBox: { screen: ChatBox },
+    ChatBox: { screen: ChatBox }
     //Main: {screen: Main}
 },{
     tabBarPosition:'top',

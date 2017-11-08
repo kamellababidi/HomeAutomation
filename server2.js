@@ -131,15 +131,54 @@ setTimeout(function(){
 }, 1000);
 })
 
+// Get the alert from gas sensor 
+app.get('/gas',(req,res) =>{
+  if(connect==undefined){
+    console.log("please connect first")
+    return res.send(JSON.stringify("p"))
+  }
+    var buf= new Buffer('i', 'utf-8')
+    var x="Gas ";
+    console.log("Gas ")
+    connect.write(new Buffer(buf),function(){
+        connect.on('data', (buffer) => {
+          
+        console.log("Gas sensor")
+        buf=buffer.toString('utf-8')
+    console.log(buf);
+ });
+    });
+setTimeout(function(){
+    console.log("Gas",buf.toString("utf-8"));
+    return res.json(buf.toString("utf-8"))
+}, 2000);
+})
+
+<<<<<<< HEAD
+//turn on the fan
+=======
 //turn on the lights
+>>>>>>> origin
 app.get('/on',(req,res)=>{
   connect.write(new Buffer('1', 'utf-8'),function(){});
   res.send(JSON.stringify('on'))
 })
 
-//turn off the lights 
+//turn off the fan 
 app.get('/off',(req,res)=>{
   connect.write(new Buffer('0', 'utf-8'),function(){});
+
+  res.send(JSON.stringify('off'))
+})
+//turn on the light
+app.get('/onL',(req,res)=>{
+  connect.write(new Buffer('2', 'utf-8'),function(){});
+  res.send(JSON.stringify('on'))
+})
+
+//turn off the light 
+app.get('/offL',(req,res)=>{
+  connect.write(new Buffer('3', 'utf-8'),function(){});
 
   res.send(JSON.stringify('off'))
 })

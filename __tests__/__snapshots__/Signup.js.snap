@@ -11,6 +11,8 @@ exports[`Search snapshot test 1`] = `
         "backgroundColor": "#87CEFA",
         "flex": 1,
         "justifyContent": "center",
+        "paddingHorizontal": 20,
+        "paddingTop": 20,
       },
       Object {
         "paddingBottom": 0,
@@ -22,50 +24,43 @@ exports[`Search snapshot test 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#87CEFA",
-        "flex": 1,
+        "flexGrow": 1,
         "justifyContent": "center",
       }
     }
   >
-    <View
+    <Image
+      source={1}
       style={
         Object {
-          "alignItems": "center",
-          "flexGrow": 1,
-          "justifyContent": "center",
+          "height": 200,
+          "width": 200,
         }
       }
-    >
-      <Image
-        source={1}
-        style={
-          Object {
-            "height": 200,
-            "width": 200,
-          }
-        }
-      />
-    </View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
-      style={
-        Object {
-          "color": "#fff",
-          "fontWeight": "700",
-          "marginTop": 5,
-          "opacity": 0.8,
-          "textAlign": "center",
-        }
+    />
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#fff",
+        "fontSize": 20,
+        "fontWeight": "700",
+        "marginBottom": 30,
+        "marginTop": 5,
+        "opacity": 0.8,
+        "textAlign": "center",
       }
-    >
-       
-      Welcome to the Home Automation System
-    </Text>
+    }
+  >
+    Welcome to the Home Automation System
+  </Text>
+  <View>
     <TextInput
+      autoCapitalize="none"
       onChangeText={[Function]}
       placeholder="username"
       placeholderTextColor="#800080"
@@ -73,7 +68,7 @@ exports[`Search snapshot test 1`] = `
       style={
         Object {
           "backgroundColor": "#E0FFFF",
-          "color": "#C71585",
+          "color": "#94336A",
           "height": 40,
           "marginBottom": 20,
           "paddingHorizontal": 10,
@@ -81,7 +76,6 @@ exports[`Search snapshot test 1`] = `
           "width": 200,
         }
       }
-      validators="required"
     />
     <TextInput
       onChangeText={[Function]}
@@ -92,7 +86,7 @@ exports[`Search snapshot test 1`] = `
       style={
         Object {
           "backgroundColor": "#E0FFFF",
-          "color": "#C71585",
+          "color": "#94336A",
           "height": 40,
           "marginBottom": 20,
           "paddingHorizontal": 10,
@@ -100,9 +94,9 @@ exports[`Search snapshot test 1`] = `
           "width": 200,
         }
       }
-      validators="required"
     />
     <TextInput
+      keyboardType="email-address"
       onChangeText={[Function]}
       placeholder="email"
       placeholderTextColor="#800080"
@@ -110,7 +104,7 @@ exports[`Search snapshot test 1`] = `
       style={
         Object {
           "backgroundColor": "#E0FFFF",
-          "color": "#C71585",
+          "color": "#94336A",
           "height": 40,
           "marginBottom": 20,
           "paddingHorizontal": 10,
@@ -120,61 +114,6 @@ exports[`Search snapshot test 1`] = `
       }
       validators="required"
     />
-    <View
-      accessibilityComponentType="button"
-      accessibilityLabel={undefined}
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      accessible={true}
-      collapsable={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-      testID={undefined}
-      tvParallaxProperties={undefined}
-    >
-      <View
-        style={
-          Array [
-            Object {},
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": "#007AFF",
-                "fontSize": 18,
-                "padding": 8,
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Pick image
-        </Text>
-      </View>
-    </View>
     <View
       accessibilityComponentType={undefined}
       accessibilityLabel={undefined}
@@ -193,9 +132,12 @@ exports[`Search snapshot test 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "backgroundColor": "#C71585",
+          "backgroundColor": "#94336A",
+          "height": 40,
+          "marginBottom": 20,
           "opacity": 1,
           "paddingVertical": 15,
+          "width": 200,
         }
       }
       testID={undefined}
@@ -208,25 +150,32 @@ exports[`Search snapshot test 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "#000000",
+            "color": "#ffffff",
             "fontWeight": "700",
+            "marginTop": -5,
             "textAlign": "center",
           }
         }
       >
-        Submit
+        Pick image
       </Text>
     </View>
-    <View
-      accessibilityComponentType="button"
-      accessibilityLabel={undefined}
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#87CEFA",
+        "flex": 0,
+        "flexDirection": "row",
       }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
       accessible={true}
-      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
       hitSlop={undefined}
       isTVSelectable={true}
       nativeID={undefined}
@@ -238,39 +187,100 @@ exports[`Search snapshot test 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "opacity": 1,
-        }
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#4F1335",
+            "borderColor": "#94336A",
+            "borderRadius": 10,
+            "borderWidth": 1,
+            "height": 40,
+            "marginBottom": 20,
+            "marginLeft": 40,
+            "marginRight": 5,
+            "paddingVertical": 15,
+            "width": 140,
+          },
+        ]
       }
       testID={undefined}
       tvParallaxProperties={undefined}
     >
-      <View
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
         style={
-          Array [
-            Object {},
-          ]
+          Object {
+            "color": "#ffffff",
+            "fontWeight": "700",
+            "marginTop": -5,
+            "textAlign": "center",
+          }
         }
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": "#007AFF",
-                "fontSize": 18,
-                "padding": 8,
-                "textAlign": "center",
-              },
-            ]
+        Submit
+      </Text>
+    </View>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#4F1335",
+            "borderColor": "#94336A",
+            "borderRadius": 10,
+            "borderWidth": 1,
+            "height": 40,
+            "marginBottom": 20,
+            "marginLeft": 40,
+            "marginRight": 5,
+            "paddingVertical": 15,
+            "width": 140,
+          },
+        ]
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontWeight": "700",
+            "marginTop": -5,
+            "textAlign": "center",
           }
-        >
-          Go back to Login
-        </Text>
-      </View>
+        }
+      >
+        Go back to Login
+      </Text>
     </View>
   </View>
 </View>

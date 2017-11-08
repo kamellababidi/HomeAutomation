@@ -1,3 +1,4 @@
+global.self = global;
 import React from 'react';
 import {
     StyleSheet,
@@ -104,7 +105,7 @@ export default class Profile extends React.Component {
                      let response = await fetch('https://home99.herokuapp.com/logout');
                      let responseJson = await response.json();
                      this.setState({logout:responseJson})
-                     return this.props.changeV('Login');
+                     this.props.screenProps.changeV('Login');
                } catch(error) {
                  console.error(error);
                  }
@@ -246,7 +247,11 @@ const styles = StyleSheet.create({
     buttonText: {
       marginTop: -5,
       textAlign: 'center',
+<<<<<<< HEAD
+      color: '#ffffff',
+=======
       color: '#000000',
+>>>>>>> origin
       fontWeight: '700'
     },
     image: {
@@ -256,6 +261,15 @@ const styles = StyleSheet.create({
       borderWidth: 3,
       borderColor: '#94336A'
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
+});
+=======
 });
 
 
+>>>>>>> origin
+=======
+});
+
+>>>>>>> origin
