@@ -154,15 +154,27 @@ setTimeout(function(){
 }, 2000);
 })
 
-//turn on the lights
+//turn on the fan
 app.get('/on',(req,res)=>{
   connect.write(new Buffer('1', 'utf-8'),function(){});
   res.send(JSON.stringify('on'))
 })
 
-//turn off the lights 
+//turn off the fan 
 app.get('/off',(req,res)=>{
   connect.write(new Buffer('0', 'utf-8'),function(){});
+
+  res.send(JSON.stringify('off'))
+})
+//turn on the light
+app.get('/onL',(req,res)=>{
+  connect.write(new Buffer('2', 'utf-8'),function(){});
+  res.send(JSON.stringify('on'))
+})
+
+//turn off the light 
+app.get('/offL',(req,res)=>{
+  connect.write(new Buffer('3', 'utf-8'),function(){});
 
   res.send(JSON.stringify('off'))
 })

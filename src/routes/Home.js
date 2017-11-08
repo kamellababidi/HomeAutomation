@@ -25,7 +25,7 @@ var MainScreenNavigator = TabNavigator({
         showIcon: true,
         style: {
          
-            backgroundColor: '#b30047'
+            backgroundColor: '#94336A'
           },
           indicatorStyle: {
             backgroundColor: 'white'

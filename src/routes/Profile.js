@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     buttonText: {
       marginTop: -5,
       textAlign: 'center',
-      color: '#000000',
+      color: '#ffffff',
       fontWeight: '700'
     },
     image: {

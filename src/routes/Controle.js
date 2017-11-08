@@ -48,11 +48,12 @@ export default class Controle extends React.Component {
         setInterval(async function(){
             try {
 
-                 let response = await fetch('http://192.168.2.46:8000/motion');
+                 let response = await fetch('http://192.168.8.106:8000/motion');
                  let responseJson = await response.json();
                  if(responseJson=='y'){
+
                     Alert.alert("Warrning there is motion in your room")
-                 }
+                }
            } catch(error) {
              console.error(error);
              }
@@ -63,7 +64,7 @@ gasAutoDetect(){
     setInterval(async function(){
         try {
 
-             let response = await fetch('http://192.168.2.46:8000/gas');
+             let response = await fetch('http://192.168.8.106:8000/gas');
              let responseJson = await response.json();
              if(responseJson=='g'){
                 Alert.alert("Gas Danger")
@@ -92,7 +93,7 @@ gasAutoDetect(){
         setInterval(async function(){
             try {
 
-                 let response = await fetch('http://192.168.2.46:8000/temp');
+                 let response = await fetch('http://192.168.8.106:8000/temp');
 
                  let responseJson = await response.json();
 
@@ -127,8 +128,10 @@ gasAutoDetect(){
         this.state.text=spokenText
         var a = this.state.text.search("turn");
         var b = this.state.text.search("on");
-        var c = this.state.text.search("off");  
-        if(a !==-1 && b!==-1){
+        var c = this.state.text.search("off");
+        var d = this.state.text.search("fan");
+        var e = this.state.text.search("lights")
+        if(a !==-1 && b!==-1 && d!==-1){
             tts.speak({
                 text:'your fan turned on', 
                 pitch:1.5, 
@@ -144,7 +147,7 @@ gasAutoDetect(){
             });
           this.turnon();
         }
-        else if(a !==-1 && c!==-1){
+        else if(a !==-1 && c!==-1 && d!==-1){
             tts.speak({
                 text:'your fan turned off', 
                 pitch:1.5, 
@@ -159,7 +162,40 @@ gasAutoDetect(){
              console.log(error)
         });
           this.turnoff();
-        }else{
+        }
+        else if(a !==-1 && b!==-1 && e!==-1){
+            tts.speak({
+                text:'your lights turned on', 
+                pitch:1.5, 
+                forceStop : false , 
+                language : 'en', 
+                country : 'US' 
+            }).then(isSpeaking=>{
+    //Success Callback
+                 console.log(isSpeaking);
+            }).catch(error=>{
+    //Errror Callback
+                 console.log(error)
+            });
+          this.turnonL();
+        }
+        else if(a !==-1 && c!==-1 && e!==-1){
+            tts.speak({
+                text:'your lights turned off', 
+                pitch:1.5, 
+                forceStop : false , 
+                language : 'en', 
+                country : 'US' 
+            }).then(isSpeaking=>{
+    //Success Callback
+                console.log(isSpeaking);
+        }).catch(error=>{
+    //Errror Callback
+             console.log(error)
+        });
+          this.turnoffL();
+        }
+        else{
             tts.speak({
                 text:'i can not understand', 
                 pitch:1.5, 
@@ -209,7 +245,7 @@ gasAutoDetect(){
     }
     async motion() {
         try {
-                 let response = await fetch('http://192.168.2.46:8000/motion');
+                 let response = await fetch('http://192.168.8.106:8000/motion');
                  let responseJson = await response.json();
                  //responseJson=JSON.parse(responseJson)
                  
@@ -263,7 +299,7 @@ gasAutoDetect(){
      } 
 async connect(){
         try {
-                 let response = await fetch('http://192.168.2.46:8000/connect');
+                 let response = await fetch('http://192.168.8.106:8000/connect');
                  let responseJson = await response.json();
                 if(responseJson=="already connected"){
                    Alert.alert("you already connected")
@@ -280,7 +316,7 @@ async connect(){
    }
    async turnon(){
         try {
-                 let response = await fetch('http://192.168.2.46:8000/on');
+                 let response = await fetch('http://192.168.8.106:8000/on');
                  let responseJson = await response.json();
                
            } catch(error) {
@@ -289,7 +325,25 @@ async connect(){
    }
    async turnoff(){
         try {
-                 let response = await fetch('http://192.168.2.46:8000/off');
+                 let response = await fetch('http://192.168.8.106:8000/off');
+                 let responseJson = await response.json();
+                
+           } catch(error) {
+             console.error(error);
+             }
+   }
+   async turnonL(){
+        try {
+                 let response = await fetch('http://192.168.8.106:8000/onL');
+                 let responseJson = await response.json();
+               
+           } catch(error) {
+             console.error(error);
+             }
+   }
+   async turnoffL(){
+        try {
+                 let response = await fetch('http://192.168.8.106:8000/offL');
                  let responseJson = await response.json();
                 
            } catch(error) {
@@ -313,42 +367,60 @@ async connect(){
                 <Text style={styles.header}>
                 the temperature now : {this.state.temp}  °C
                 </Text>
-           
-             <TouchableHighlight
+
+            <TouchableHighlight
             style={styles.buttonContainer}
              onPress={() => this.connect()}>
              <Text style={styles.buttonText}>Connect</Text>
-             </TouchableHighlight>                
-               
+             </TouchableHighlight> 
+            <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>
+             <TouchableOpacity
+             style={styles.buttonRow}
+             onPress={() => this.turnon()}>
+             <Text style={styles.buttonText}>Turn on fan</Text>
+             </TouchableOpacity> 
 
              <TouchableOpacity
-             style={styles.buttonContainer}
-             onPress={() => this.turnon()}>
-             <Text style={styles.buttonText}>Turn on lights</Text>
-             </TouchableOpacity> 
-             
-             <TouchableOpacity
-             style={styles.buttonContainer}
+             style={styles.buttonRow}
              onPress={() => this.turnoff()}>
-             <Text style={styles.buttonText}>Turn off lights</Text>
-               </TouchableOpacity> 
+             <Text style={styles.buttonText}>Turn off fan</Text>
+               </TouchableOpacity>
+
+             </View>
+
+             <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>
+ 
+
+             <TouchableOpacity
+             style={styles.buttonRow}
+             onPress={() => this.turnonL()}>
+             <Text style={styles.buttonText}>Turn on the lights</Text>
+             </TouchableOpacity> 
+
+             <TouchableOpacity
+             style={styles.buttonRow}
+             onPress={() => this.turnoffL()}>
+             <Text style={styles.buttonText}>Turn off the lights</Text>
+             </TouchableOpacity> 
+                </View>
+              <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>  
+ 
                 
              <TouchableOpacity
-             style={styles.buttonContainer}
+             style={styles.buttonRow}
              onPress={() => this.motion()}>
-             <Text style={styles.buttonText}>Detect motion in my room</Text>
+             <Text style={styles.buttonText}>Detect motion</Text>
              </TouchableOpacity> 
                 
              <TouchableOpacity
-             style={styles.buttonContainer}
+             style={styles.buttonRow}
              onPress={() => this.speak()}>
              <Text style={styles.buttonText}>Talk to your home</Text>
              </TouchableOpacity> 
             
+         </View>
 
-
-            
-        </View>
+         </View>   
                 
 
         )
@@ -362,6 +434,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 20,
+        padding: 70,
         justifyContent: 'center'
     },
     
@@ -396,8 +469,24 @@ const styles = StyleSheet.create({
         width: 200
     },
     buttonText: {
+        marginTop: -5,
         textAlign: 'center',
-        color: '#000000',
+        color: '#ffffff',
         fontWeight: '700'
+    },
+        buttonRow :{    
+        backgroundColor: '#4F1335',
+        paddingVertical: 15,
+        alignItems: 'center',
+        marginBottom: 10,
+        marginTop: 10,
+        opacity: 0.9,
+        marginLeft: 40,
+        marginRight: 5,
+        borderRadius:120,
+        borderWidth: 1,
+        borderColor: '#94336A',
+        height: 40,
+        width: 140
     }
 });
