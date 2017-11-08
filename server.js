@@ -4,6 +4,10 @@ var mysql = require('mysql');
 var session =require("express-session");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var http = require('http')
+var socketio = require('socket.io');
+var server = http.Server(app);
+var websocket = socketio(server);
 var bcrypt=require("bcrypt-nodejs")
 app.use(function (req, res, next) {
 
@@ -178,12 +182,53 @@ app.post('/SetName',(req,res) =>{
 		res.send();
 	})
 })
-
-//specify port number
 var port = process.env.PORT||8000;
-//run the server 
-app.listen(port,(err) =>{
-	if(err)
-		throw err
-	console.log('listening on 8000')
-})
+server.listen(port, () => console.log('listening on *:8000'));
+websocket.on('connection', (socket) => {
+  
+  console.log("user connected ================================");
+
+  var sql="select * from msgT;";
+  connection.query(sql,function(err,result){
+          if(err){
+            throw err
+        }
+        console.log("query result =====>",result);
+        websocket.emit('allDataBase', result);
+  }) 
+
+  socket.on('message', (message) => {
+      // debugger;
+      console.log('HHHHHHHHHH ========> ',message);
+      if(!message){
+        return 
+      }
+      var sql="insert into msgT (user,text,date) values ('"+message.user+"','"+message.text+"','"+message.date+"');";
+            connection.query(sql,function(err,result){
+                    if(err){
+                        throw err
+                    }
+                })
+      // websocket.emit('msg', message);
+      var sql="select * from msgT;";
+      connection.query(sql,function(err,result){
+          if(err){
+            throw err
+        }
+        console.log("query result =====>",result);
+        websocket.emit('msg', result);
+  }) 
+  });
+
+  socket.on('disconnect', function(){
+       console.log('user disconnected');
+   });
+});
+//specify port number
+// var port = process.env.PORT||8000;
+// //run the server 
+// app.listen(port,(err) =>{
+// 	if(err)
+// 		throw err
+// 	console.log('listening on 8000')
+// })

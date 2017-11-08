@@ -247,7 +247,11 @@ const styles = StyleSheet.create({
     buttonText: {
       marginTop: -5,
       textAlign: 'center',
+<<<<<<< HEAD
+      color: '#ffffff',
+=======
       color: '#000000',
+>>>>>>> origin
       fontWeight: '700'
     },
     image: {
@@ -257,5 +261,15 @@ const styles = StyleSheet.create({
       borderWidth: 3,
       borderColor: '#94336A'
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
+});
+=======
 });
 
+
+>>>>>>> origin
+=======
+});
+
+>>>>>>> origin
