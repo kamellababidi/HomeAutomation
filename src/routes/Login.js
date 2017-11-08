@@ -67,9 +67,9 @@ export default class Login extends React.Component {
                         placeholder="username"
                         returnKeyType="next"
                         validators="required"
-                        onSubmitEditing={()=> this.passwordInput.focus()}
+                        onSubmitEditing={() => this.passwordInput.focus()}
                         onChangeText={value =>
-                        this.setState({ username: value })}
+                            this.setState({ username: value })}
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
@@ -79,27 +79,32 @@ export default class Login extends React.Component {
                         secureTextEntry={true}
                         validators="required"
                         returnKeyType="go"
-                        ref={(Input)=> this.passwordInput = Input}
+                        ref={Input => (this.passwordInput = Input)}
                         onChangeText={value =>
-                        this.setState({ password: value })}
+                            this.setState({ password: value })}
                         placeholderTextColor="#800080"
                         style={styles.input}
                     />
-                    <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>
-                    <TouchableHighlight
-                        style={styles.buttonRow}
-                        onPress={() => this.Login()}
+                    <View
+                        style={{
+                            flex: 0,
+                            flexDirection: 'row',
+                            backgroundColor: '#87CEFA'
+                        }}
                     >
-                        <Text style={styles.buttonText}>Submit</Text>
-                    </TouchableHighlight>
+                        <TouchableHighlight
+                            style={styles.buttonRow}
+                            onPress={() => this.Login()}
+                        >
+                            <Text style={styles.buttonText}>Submit</Text>
+                        </TouchableHighlight>
 
-                    <TouchableHighlight
-                        style={styles.buttonRow}
-                        onPress={() => this.props.changeV('Signup')}
-                    >
-                        <Text style={styles.buttonText}>Go to Signup</Text>
-                    </TouchableHighlight>
-
+                        <TouchableHighlight
+                            style={styles.buttonRow}
+                            onPress={() => this.props.changeV('Signup')}
+                        >
+                            <Text style={styles.buttonText}>Go to Signup</Text>
+                        </TouchableHighlight>
                     </View>
                 </View>
             </KeyboardAvoidingView>
@@ -115,12 +120,12 @@ const styles = StyleSheet.create({
         padding: 60,
         justifyContent: 'center'
     },
-    
+
     logoContainer: {
         justifyContent: 'center',
         alignItems: 'center',
         flexGrow: 1,
-        paddingBottom : 30,
+        paddingBottom: 30,
         marginBottom: 35
     },
 
@@ -130,25 +135,24 @@ const styles = StyleSheet.create({
     },
     header: {
         color: '#fff',
-        marginBottom:0,
+        marginBottom: 0,
         marginTop: 5,
         marginBottom: 30,
         textAlign: 'center',
         opacity: 0.8,
         fontWeight: '700',
-        fontSize :20
+        fontSize: 20
     },
     input: {
-        marginBottom: 20,   
+        marginBottom: 20,
         paddingHorizontal: 10,
         backgroundColor: '#E0FFFF',
         marginLeft: 85,
         textAlign: 'center',
         justifyContent: 'center',
-        color: '#94336A',  
-        height: 40,      
+        color: '#94336A',
+        height: 40,
         width: 200
-        
     },
     buttonContainer: {
         backgroundColor: '#94336A',
@@ -160,14 +164,14 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontWeight: '700'
     },
-        buttonRow :{    
+    buttonRow: {
         backgroundColor: '#4F1335',
         paddingVertical: 15,
         alignItems: 'center',
         marginBottom: 100,
         marginLeft: 40,
         marginRight: 5,
-        borderRadius:10,
+        borderRadius: 10,
         borderWidth: 1,
         borderColor: '#94336A',
         height: 40,
