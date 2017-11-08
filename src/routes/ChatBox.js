@@ -1,16 +1,8 @@
 global.self = global;
 import React from 'react';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { View, Text, TouchableOpacity, TextInput, Alert, FlatList, StyleSheet, KeyboardAvoidingView, Image} from 'react-native';
-=======
-import { View, Text, TouchableOpacity, TextInput, Alert, FlatList, StyleSheet, KeyboardAvoidingView, Image,} from 'react-native';
->>>>>>> origin
-=======
 
 import { View, Text, TouchableOpacity, TextInput, Alert, FlatList, StyleSheet, KeyboardAvoidingView, Image} from 'react-native';
 
->>>>>>> origin
 import SocketIOClient from 'socket.io-client';
 // import SocketIOClient from 'https://code.jquery.com/jquery-1.11.1.js'
 import { Icon} from 'react-native-elements'; 
@@ -43,15 +35,8 @@ export default class ChatBox extends React.Component {
 
     this.socket = SocketIOClient('https://home99.herokuapp.com/');
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  this.socket = SocketIOClient('https://home99.herokuapp.com/');
-=======
-  this.socket = SocketIOClient('http://192.168.2.46:8000');
->>>>>>> origin
-=======
+
     //fetch previous messages from the database
->>>>>>> origin
     this.socket.on('allDataBase',(data)=> {
       this.showArr(data);
     })

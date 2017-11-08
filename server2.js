@@ -154,11 +154,8 @@ setTimeout(function(){
 }, 2000);
 })
 
-<<<<<<< HEAD
+
 //turn on the fan
-=======
-//turn on the lights
->>>>>>> origin
 app.get('/on',(req,res)=>{
   connect.write(new Buffer('1', 'utf-8'),function(){});
   res.send(JSON.stringify('on'))
