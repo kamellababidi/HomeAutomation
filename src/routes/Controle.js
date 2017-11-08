@@ -50,7 +50,11 @@ export default class Controle extends React.Component {
             try {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/motion');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/motion');
+>>>>>>> origin
 =======
                  let response = await fetch('http://192.168.8.119:8000/motion');
 >>>>>>> origin
@@ -70,7 +74,11 @@ gasAutoDetect(){
         try {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
              let response = await fetch('http://192.168.8.106:8000/gas');
+=======
+             let response = await fetch('http://192.168.8.119:8000/gas');
+>>>>>>> origin
 =======
              let response = await fetch('http://192.168.8.119:8000/gas');
 >>>>>>> origin
@@ -103,7 +111,11 @@ gasAutoDetect(){
             try {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/temp');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/temp');
+>>>>>>> origin
 =======
                  let response = await fetch('http://192.168.8.119:8000/temp');
 >>>>>>> origin
@@ -259,7 +271,11 @@ gasAutoDetect(){
     async motion() {
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/motion');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/motion');
+>>>>>>> origin
 =======
                  let response = await fetch('http://192.168.8.119:8000/motion');
 >>>>>>> origin
@@ -317,7 +333,11 @@ gasAutoDetect(){
 async connect(){
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/connect');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/connect');
+>>>>>>> origin
 =======
                  let response = await fetch('http://192.168.8.119:8000/connect');
 >>>>>>> origin
@@ -338,7 +358,11 @@ async connect(){
    async turnon(){
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/on');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/on');
+>>>>>>> origin
 =======
                  let response = await fetch('http://192.168.8.119:8000/on');
 >>>>>>> origin
@@ -350,6 +374,7 @@ async connect(){
    }
    async turnoff(){
         try {
+<<<<<<< HEAD
 <<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/off');
                  let responseJson = await response.json();
@@ -370,6 +395,9 @@ async connect(){
    async turnoffL(){
         try {
                  let response = await fetch('http://192.168.8.106:8000/offL');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/off');
+>>>>>>> origin
 =======
                  let response = await fetch('http://192.168.8.119:8000/off');
 >>>>>>> origin

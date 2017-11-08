@@ -262,9 +262,14 @@ const styles = StyleSheet.create({
       borderColor: '#94336A'
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 });
 =======
 });
 
+
+>>>>>>> origin
+=======
+});
 
 >>>>>>> origin

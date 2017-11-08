@@ -11,6 +11,7 @@ exports[`Search snapshot test 1`] = `
         "backgroundColor": "#87CEFA",
         "flex": 1,
         "justifyContent": "center",
+        "padding": 60,
       },
       Object {
         "paddingBottom": 0,
@@ -24,6 +25,8 @@ exports[`Search snapshot test 1`] = `
         "alignItems": "center",
         "flexGrow": 1,
         "justifyContent": "center",
+        "marginBottom": 35,
+        "paddingBottom": 30,
       }
     }
   >
@@ -45,37 +48,32 @@ exports[`Search snapshot test 1`] = `
     style={
       Object {
         "color": "#fff",
+        "fontSize": 20,
         "fontWeight": "700",
+        "marginBottom": 30,
         "marginTop": 5,
         "opacity": 0.8,
         "textAlign": "center",
       }
     }
   >
-     
     Welcome to the Home Automation System
   </Text>
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#87CEFA",
-        "flex": 1,
-        "justifyContent": "center",
-      }
-    }
-  >
+  <View>
     <TextInput
       onChangeText={[Function]}
+      onSubmitEditing={[Function]}
       placeholder="username"
       placeholderTextColor="#800080"
       returnKeyType="next"
       style={
         Object {
           "backgroundColor": "#E0FFFF",
-          "color": "#C71585",
+          "color": "#94336A",
           "height": 40,
+          "justifyContent": "center",
           "marginBottom": 20,
+          "marginLeft": 85,
           "paddingHorizontal": 10,
           "textAlign": "center",
           "width": 200,
@@ -92,9 +90,11 @@ exports[`Search snapshot test 1`] = `
       style={
         Object {
           "backgroundColor": "#E0FFFF",
-          "color": "#C71585",
+          "color": "#94336A",
           "height": 40,
+          "justifyContent": "center",
           "marginBottom": 20,
+          "marginLeft": 85,
           "paddingHorizontal": 10,
           "textAlign": "center",
           "width": 200,
@@ -103,81 +103,52 @@ exports[`Search snapshot test 1`] = `
       validators="required"
     />
     <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      collapsable={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "backgroundColor": "#C71585",
-          "opacity": 1,
-          "paddingVertical": 15,
+          "backgroundColor": "#87CEFA",
+          "flex": 0,
+          "flexDirection": "row",
         }
       }
-      testID={undefined}
-      tvParallaxProperties={undefined}
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#000000",
-            "fontWeight": "700",
-            "textAlign": "center",
-          }
-        }
-      >
-        Submit
-      </Text>
-    </View>
-    <View
-      accessibilityComponentType="button"
-      accessibilityLabel={undefined}
-      accessibilityTraits={
-        Array [
-          "button",
-        ]
-      }
-      accessible={true}
-      collapsable={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "opacity": 1,
-        }
-      }
-      testID={undefined}
-      tvParallaxProperties={undefined}
     >
       <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Array [
-            Object {},
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#4F1335",
+              "borderColor": "#94336A",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "height": 40,
+              "marginBottom": 100,
+              "marginLeft": 40,
+              "marginRight": 5,
+              "paddingVertical": 15,
+              "width": 140,
+            },
           ]
         }
+        testID={undefined}
+        tvParallaxProperties={undefined}
       >
         <Text
           accessible={true}
@@ -185,14 +156,68 @@ exports[`Search snapshot test 1`] = `
           disabled={false}
           ellipsizeMode="tail"
           style={
-            Array [
-              Object {
-                "color": "#007AFF",
-                "fontSize": 18,
-                "padding": 8,
-                "textAlign": "center",
-              },
-            ]
+            Object {
+              "color": "#ffffff",
+              "fontWeight": "700",
+              "marginTop": -5,
+              "textAlign": "center",
+            }
+          }
+        >
+          Submit
+        </Text>
+      </View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#4F1335",
+              "borderColor": "#94336A",
+              "borderRadius": 10,
+              "borderWidth": 1,
+              "height": 40,
+              "marginBottom": 100,
+              "marginLeft": 40,
+              "marginRight": 5,
+              "paddingVertical": 15,
+              "width": 140,
+            },
+          ]
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontWeight": "700",
+              "marginTop": -5,
+              "textAlign": "center",
+            }
           }
         >
           Go to Signup

@@ -93,7 +93,7 @@ app.post('/signup',(req,res)=>{
 			return res.send(JSON.stringify("exist"));
 		}
 
-		bcrypt.hash(req.body.user.password, null, null, function(err, hash){
+		bcrypt.hash(req.body.user.password, 10, null, function(err, hash){
 		//else insert it into database
 		var sql="insert into user (name,password,image) values ('"+req.body.user.username+"','"+hash+"','"+req.body.user.image+"');";
 		connection.query(sql,function(err,result){

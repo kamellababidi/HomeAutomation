@@ -1,10 +1,8 @@
-global.self = global;
 import React from 'react';
-<<<<<<< HEAD
+
 import { StyleSheet, View, Dimensions,Image ,Alert } from 'react-native';
-=======
-import { StyleSheet, View,Image, Dimensions } from 'react-native';
->>>>>>> origin
+
+
 import MapView from 'react-native-maps';
 import { Icon} from 'react-native-elements'; 
 const { width, height } = Dimensions.get('window');
@@ -76,11 +74,12 @@ export default class Map extends React.Component {
   [
     {text: 'Ask me later', onPress: () => Alert.alert('Ask me later pressed')},
     {text: 'Cancel', onPress: () => Alert.alert('Cancel Pressed'), style: 'cancel'},
-    {text: 'OK', onPress: () => this.sendaction()},
-  ],
-  { cancelable: false }
-)
-    }
+        Alert.alert(
+  'you are around '+this.state.dist+',do you want to open garag door?',
+  [
+    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+
+
     async sendaction(){
         //turn on the light
         try {
@@ -91,7 +90,8 @@ export default class Map extends React.Component {
            } catch(error) {
              console.error(error);
              }
-    }
+
+ 
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -135,24 +135,20 @@ export default class Map extends React.Component {
             <View style={styles.container}>
                 <MapView
                     style={styles.map}
-<<<<<<< HEAD
+
                     onPress={()=> {
                         var rbk={lat:"31.9865875",lng:"35.8377417"};
                         var desta= getDistance(this.state.initialPosition,rbk);
             this.state.dist=(desta/100).toString();
                         Alert.alert(this.state.dist)
                         if(desta/100<1){
+
                             this.notify()
-            }
+
+                        }
                     }}
-                    // onPress={(m) => this.setState({ x: m.nativeEvent.coordinate.latitude ,y: m.nativeEvent.coordinate.longitude }) Alert.alert(x,y)}
                     region={this.state.initialPosition}
-=======
-                    //  onPress={(m) => this.setState({
-                    //   x: m.nativeEvent.coordinate.latitude ,
-                    //   y: m.nativeEvent.coordinate.longitude }) Alert.alert(x,y)}
-                    // region={this.state.initialPosition}
->>>>>>> origin
+
                 >
                     <MapView.Marker coordinate={this.state.markerPosition}>
                         <View style={styles.radius}>
