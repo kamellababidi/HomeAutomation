@@ -9,7 +9,7 @@ whatever where you are just check your location .
 in addition to motion sensor that keep you always in touch if there any strange movement in the home, and also you can
 keep in touch with all your family members through HomeAutomation spiceal chat. 
 
-the bigest problem was in controlling any thing from one place(or App) or from any where without thinking in the distance.
+the biggest problem was in controlling any thing from one place(or App) or from any where without thinking in the distance.
 
 Now you can control, secure your home and contact your family from one App and from any where.
 
