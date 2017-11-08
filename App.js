@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, Alert, View } from 'react-native';
 import Login from './src/routes/Login';
 import Signup from './src/routes/Signup';
+import AboutUs from './src/routes/AboutUs';
 import Profile from './src/routes/Profile';
 import Map from './src/routes/map';
 import MainScreenNavigator from './src/routes/Home';
@@ -29,6 +30,10 @@ export default class App extends React.Component {
                     screenProps={{ changeV: this.changestate.bind(this) }}
                 />
             );
+
+        }
+        else if(this.state.component == 'AboutUs'){
+           return <AboutUs changeV={this.changestate.bind(this)} />; 
         }
     }
 }
