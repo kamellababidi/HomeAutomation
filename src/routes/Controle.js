@@ -1,3 +1,4 @@
+global.self = global;
 import React from 'react';
 import {
     StyleSheet,
@@ -48,7 +49,11 @@ export default class Controle extends React.Component {
         setInterval(async function(){
             try {
 
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/motion');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/motion');
+>>>>>>> origin
                  let responseJson = await response.json();
                  if(responseJson=='y'){
 
@@ -64,7 +69,11 @@ gasAutoDetect(){
     setInterval(async function(){
         try {
 
+<<<<<<< HEAD
              let response = await fetch('http://192.168.8.106:8000/gas');
+=======
+             let response = await fetch('http://192.168.8.119:8000/gas');
+>>>>>>> origin
              let responseJson = await response.json();
              if(responseJson=='g'){
                 Alert.alert("Gas Danger")
@@ -93,7 +102,11 @@ gasAutoDetect(){
         setInterval(async function(){
             try {
 
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/temp');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/temp');
+>>>>>>> origin
 
                  let responseJson = await response.json();
 
@@ -245,7 +258,11 @@ gasAutoDetect(){
     }
     async motion() {
         try {
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/motion');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/motion');
+>>>>>>> origin
                  let responseJson = await response.json();
                  //responseJson=JSON.parse(responseJson)
                  
@@ -299,7 +316,11 @@ gasAutoDetect(){
      } 
 async connect(){
         try {
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/connect');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/connect');
+>>>>>>> origin
                  let responseJson = await response.json();
                 if(responseJson=="already connected"){
                    Alert.alert("you already connected")
@@ -316,7 +337,11 @@ async connect(){
    }
    async turnon(){
         try {
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/on');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/on');
+>>>>>>> origin
                  let responseJson = await response.json();
                
            } catch(error) {
@@ -325,6 +350,7 @@ async connect(){
    }
    async turnoff(){
         try {
+<<<<<<< HEAD
                  let response = await fetch('http://192.168.8.106:8000/off');
                  let responseJson = await response.json();
                 
@@ -344,6 +370,9 @@ async connect(){
    async turnoffL(){
         try {
                  let response = await fetch('http://192.168.8.106:8000/offL');
+=======
+                 let response = await fetch('http://192.168.8.119:8000/off');
+>>>>>>> origin
                  let responseJson = await response.json();
                 
            } catch(error) {
@@ -367,6 +396,7 @@ async connect(){
                 <Text style={styles.header}>
                 the temperature now : {this.state.temp}  °C
                 </Text>
+<<<<<<< HEAD
 
             <TouchableHighlight
             style={styles.buttonContainer}
@@ -374,6 +404,16 @@ async connect(){
              <Text style={styles.buttonText}>Connect</Text>
              </TouchableHighlight> 
             <View style={{flex: 0, flexDirection: 'row',backgroundColor: '#87CEFA'}}>
+=======
+           
+             <TouchableHighlight
+            style={styles.buttonContainer}
+             onPress={() => this.connect()}>
+             <Text style={styles.buttonText}>Connect</Text>
+             </TouchableHighlight>                
+               
+
+>>>>>>> origin
              <TouchableOpacity
              style={styles.buttonRow}
              onPress={() => this.turnon()}>
@@ -420,7 +460,13 @@ async connect(){
             
          </View>
 
+<<<<<<< HEAD
          </View>   
+=======
+
+            
+        </View>
+>>>>>>> origin
                 
 
         )
@@ -434,7 +480,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         paddingTop: 20,
+<<<<<<< HEAD
         padding: 70,
+=======
+>>>>>>> origin
         justifyContent: 'center'
     },
     

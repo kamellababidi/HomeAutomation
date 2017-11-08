@@ -61,7 +61,8 @@ void setup()                          // The main function that sets up the ardu
 {
   Serial.begin(9600);                // Begin the serial communication and set the data rate in bits per second (baud)  to 9600 baud.
   pinMode(2, OUTPUT);                // set the mode of the pin number 2 on the ardiuno to be output pin.
-}
+  pinMode(8, OUTPUT);                // set the mode of the pin number 8 on the ardiuno to be output pin.
+} 
 void loop()                         // in finite loop that will repeat the code for ever to ready to detect and handle every event.
 {
 
@@ -81,13 +82,18 @@ void loop()                         // in finite loop that will repeat the code 
       Serial.flush() ;                  // delete the serial buffer 
         Serial.write('y');               // send "y" to the server 
         Serial.flush() ;             // delete the serial buffer 
-        digitalWrite(2, 1);          // turn on the led that is connected to the pin number 2
+        for(int i = 0;i<8;i++){         
+          digitalWrite(8, 1); 
+          delay(200);  
+          digitalWrite(8, 0); 
+          delay(200);    
+        }         
       }
       if (counter <= 50) {        // the case that we have don't motion
         Serial.flush() ;           // delete the serial buffer 
         Serial.write('n');            // send "n" to the server 
         Serial.flush() ;           // delete the serial buffer 
-        digitalWrite(2, 0);        // turn off the led that is connected to the pin number 2
+        digitalWrite(8, 0);        // turn off the led that is connected to the pin number 8
       }
       counter=0;                    // change the counter state for the next motion check
     if (data == '1')                 // checking if the data reciced from the server is equals to "1"
