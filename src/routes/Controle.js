@@ -49,7 +49,7 @@ export default class Controle extends React.Component {
         setInterval(async function(){
             try {
 
-                 let response = await fetch('http://192.168.2.46:8000/motion');
+                 let response = await fetch('http://192.168.8.119:8000/motion');
                  let responseJson = await response.json();
                  if(responseJson=='y'){
                     Alert.alert("Warrning there is motion in your room")
@@ -64,7 +64,7 @@ gasAutoDetect(){
     setInterval(async function(){
         try {
 
-             let response = await fetch('http://192.168.2.46:8000/gas');
+             let response = await fetch('http://192.168.8.119:8000/gas');
              let responseJson = await response.json();
              if(responseJson=='g'){
                 Alert.alert("Gas Danger")
@@ -93,7 +93,7 @@ gasAutoDetect(){
         setInterval(async function(){
             try {
 
-                 let response = await fetch('http://192.168.2.46:8000/temp');
+                 let response = await fetch('http://192.168.8.119:8000/temp');
 
                  let responseJson = await response.json();
 
@@ -210,7 +210,7 @@ gasAutoDetect(){
     }
     async motion() {
         try {
-                 let response = await fetch('http://192.168.2.46:8000/motion');
+                 let response = await fetch('http://192.168.8.119:8000/motion');
                  let responseJson = await response.json();
                  //responseJson=JSON.parse(responseJson)
                  
@@ -264,7 +264,7 @@ gasAutoDetect(){
      } 
 async connect(){
         try {
-                 let response = await fetch('http://192.168.2.46:8000/connect');
+                 let response = await fetch('http://192.168.8.119:8000/connect');
                  let responseJson = await response.json();
                 if(responseJson=="already connected"){
                    Alert.alert("you already connected")
@@ -281,7 +281,7 @@ async connect(){
    }
    async turnon(){
         try {
-                 let response = await fetch('http://192.168.2.46:8000/on');
+                 let response = await fetch('http://192.168.8.119:8000/on');
                  let responseJson = await response.json();
                
            } catch(error) {
@@ -290,7 +290,7 @@ async connect(){
    }
    async turnoff(){
         try {
-                 let response = await fetch('http://192.168.2.46:8000/off');
+                 let response = await fetch('http://192.168.8.119:8000/off');
                  let responseJson = await response.json();
                 
            } catch(error) {
