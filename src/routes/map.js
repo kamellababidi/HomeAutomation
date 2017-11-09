@@ -1,5 +1,8 @@
 import React from 'react';
+
 import { StyleSheet, View, Dimensions,Image ,Alert } from 'react-native';
+
+
 import MapView from 'react-native-maps';
 import { Icon} from 'react-native-elements'; 
 const { width, height } = Dimensions.get('window');
@@ -11,6 +14,7 @@ const LONGTITUDE_DELTA = LATITUDE_DELTA * ASPECT_PATIO;
 var rad = function(x) {
   return x * Math.PI / 180;
 };
+const tts = require('react-native-android-speech')
 var getDistance = function(p1, rbk) {
   var R = 6378137; // Earth’s mean radius in meter
   var dLat = rad(rbk.lat - p1.latitude);
@@ -51,17 +55,42 @@ export default class Map extends React.Component {
     }
     watchID: ?number = null;
     notify(){
-        Alert.alert(
-  'you are around '+this.state.dist+',do you want to open garag door?',
+        tts.speak({
+                text:'you are around '+this.state.dist+',do you want to open garag door?', 
+                pitch:1.5, 
+                forceStop : false , 
+                language : 'en', 
+                country : 'US' 
+            }).then(isSpeaking=>{
+    //Success Callback
+                 console.log(isSpeaking);
+            }).catch(error=>{
+    //Errror Callback
+                 console.log(error)
+            });
+       Alert.alert(
+  'Warning',
+  'My Alert Msg',
   [
+    {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
     {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-    {text: 'OK', onPress: () => this.sendaction()},
+    {text: 'OK', onPress: () => console.log('OK Pressed')},
   ],
   { cancelable: false }
 )
     }
-    sendaction(){
+
+    async sendaction(){
         //turn on the light
+        try {
+                 let response = await fetch('http://192.168.8.106:8000/onL');
+                 let responseJson = await response.json();
+
+               
+           } catch(error) {
+             console.error(error);
+             }
+
     }
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(
@@ -81,7 +110,7 @@ export default class Map extends React.Component {
     
             
             },
-            error => alert(JSON.stringify(new Date(), error)),
+            error => console.log(JSON.stringify(new Date(), error)),
             { enableHighAccuracy: true, timeout: 10000, maximumAge: 3000 }
         );
         this.watchID = navigator.geolocation.watchPosition(position => {
@@ -106,17 +135,20 @@ export default class Map extends React.Component {
             <View style={styles.container}>
                 <MapView
                     style={styles.map}
-                    onPress={()=> {alert(JSON.stringify(this.state.initialPosition))
+
+                    onPress={()=> {
                         var rbk={lat:"31.9865875",lng:"35.8377417"};
                         var desta= getDistance(this.state.initialPosition,rbk);
             this.state.dist=(desta/100).toString();
                         Alert.alert(this.state.dist)
                         if(desta/100<1){
-                Alert.alert("you arraived")
-            }
+
+                            this.notify()
+
+                        }
                     }}
-                    // onPress={(m) => this.setState({ x: m.nativeEvent.coordinate.latitude ,y: m.nativeEvent.coordinate.longitude }) Alert.alert(x,y)}
                     region={this.state.initialPosition}
+
                 >
                     <MapView.Marker coordinate={this.state.markerPosition}>
                         <View style={styles.radius}>
