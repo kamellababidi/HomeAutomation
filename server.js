@@ -61,6 +61,19 @@ connection.connect(function(err) {
     }
 
     console.log('connection connected');
+    
+    // var sql3 =
+   //  'CREATE TABLE msgT (id INT AUTO_INCREMENT PRIMARY KEY, user varchar (50), text varchar(200), date varchar(20));';
+   //  connection.query(sql3, function(err, result){
+   //    if (err){
+   //      throw err;
+   //    }
+   //    console.log('CREATE Chat Box table in mysql');
+   //  });
+
+
+
+
     //  var sql =
     //         'CREATE TABLE user (id INT AUTO_INCREMENT PRIMARY KEY, name varchar(255), password varchar(255), email varchar(200), image varchar(255), api varchar(250))';
     //     connection.query(sql, function(err, result) {

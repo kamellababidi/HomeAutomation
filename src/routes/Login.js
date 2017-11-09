@@ -1,4 +1,4 @@
-global.self = global;
+
 import React from 'react';
 import {
     StyleSheet,
@@ -22,7 +22,7 @@ export default class Login extends React.Component {
     }
     async Login() {
         try {
-            let response = await fetch('https://home99.herokuapp.com/login', {
+            let response = await fetch('http://192.168.8.106:8000/login', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',

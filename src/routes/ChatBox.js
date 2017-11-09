@@ -46,7 +46,7 @@ export default class ChatBox extends React.Component {
             msg: ''
         };
 
-        this.socket = SocketIOClient('https://home99.herokuapp.com/');
+        this.socket = SocketIOClient('http://192.168.8.106:8000/');
 
         //fetch previous messages from the database
         this.socket.on('allDataBase', data => {
@@ -62,7 +62,7 @@ export default class ChatBox extends React.Component {
     //fetch user info
     async getCureentUser() {
         try {
-            let response = await fetch('https://home99.herokuapp.com/user');
+            let response = await fetch('http://192.168.8.106:8000/user');
             let responseJson = await response.json();
             this.setState({ image: responseJson.image });
             this.setState({ name: responseJson.name });

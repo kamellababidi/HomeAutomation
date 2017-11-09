@@ -174,7 +174,7 @@ app.get('/offL', (req, res) => {
 });
 
 //specify port number
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8080;
 //run the server
 app.listen(port, err => {
     if (err) throw err;

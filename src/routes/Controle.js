@@ -47,7 +47,7 @@ export default class Controle extends React.Component {
     autoDetect() {
         setInterval(async function() {
             try {
-                let response = await fetch('http://192.168.8.106:8000/motion');
+                let response = await fetch('http://192.168.8.106:8080/motion');
 
                 let responseJson = await response.json();
                 if (responseJson == 'y') {
@@ -62,7 +62,7 @@ export default class Controle extends React.Component {
     gasAutoDetect() {
         setInterval(async function() {
             try {
-                let response = await fetch('http://192.168.8.106:8000/gas');
+                let response = await fetch('http://192.168.8.106:8080/gas');
 
                 let responseJson = await response.json();
                 if (responseJson == 'g') {
@@ -95,7 +95,7 @@ export default class Controle extends React.Component {
         var x = this;
         setInterval(async function() {
             try {
-                let response = await fetch('http://192.168.8.106:8000/temp');
+                let response = await fetch('http://192.168.8.106:8080/temp');
                 let responseJson = await response.json();
 
                 // Alert.alert(typeof(responseJson));
@@ -258,7 +258,7 @@ export default class Controle extends React.Component {
     }
     async motion() {
         try {
-            let response = await fetch('http://192.168.8.106:8000/motion');
+            let response = await fetch('http://192.168.8.106:8080/motion');
 
             let responseJson = await response.json();
             //responseJson=JSON.parse(responseJson)
@@ -310,7 +310,7 @@ export default class Controle extends React.Component {
     //get current user
     async getCureentUser() {
         try {
-            let response = await fetch('https://home99.herokuapp.com/user');
+            let response = await fetch('http://192.168.8.106:8000/user');
             let responseJson = await response.json();
             this.setState({ name: responseJson.name });
         } catch (error) {
@@ -319,7 +319,7 @@ export default class Controle extends React.Component {
     }
     async connect() {
         try {
-            let response = await fetch('http://192.168.8.106:8000/connect');
+            let response = await fetch('http://192.168.8.106:8080/connect');
 
             let responseJson = await response.json();
             if (responseJson == 'already connected') {
@@ -336,7 +336,7 @@ export default class Controle extends React.Component {
     }
     async turnon() {
         try {
-            let response = await fetch('http://192.168.8.106:8000/on');
+            let response = await fetch('http://192.168.8.106:8080/on');
             let responseJson = await response.json();
         } catch (error) {
             console.error(error);
@@ -344,7 +344,7 @@ export default class Controle extends React.Component {
     }
     async turnoff() {
         try {
-            let response = await fetch('http://192.168.8.106:8000/off');
+            let response = await fetch('http://192.168.8.106:8080/off');
             let responseJson = await response.json();
         } catch (error) {
             console.error(error);
@@ -352,7 +352,7 @@ export default class Controle extends React.Component {
     }
     async turnonL() {
         try {
-            let response = await fetch('http://192.168.8.106:8000/onL');
+            let response = await fetch('http://192.168.8.106:8080/onL');
             let responseJson = await response.json();
         } catch (error) {
             console.error(error);
@@ -360,7 +360,7 @@ export default class Controle extends React.Component {
     }
     async turnoffL() {
         try {
-            let response = await fetch('http://192.168.8.106:8000/offL');
+            let response = await fetch('http://192.168.8.106:8080/offL');
             let responseJson = await response.json();
         } catch (error) {
             console.error(error);
